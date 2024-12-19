@@ -38,19 +38,41 @@ public class Solution{
         int[] prev = new int[maxWeight + 1];
 
         for(int i = 1; i <= n; i++){
-            int[] curr = new int[maxWeight + 1];
-            for(int j = 0; j <= maxWeight; j++){
+            for(int j = maxWeight; j >= 0; j--){
                 if(j >= weight[i - 1]){
-                    curr[j] = Math.max(value[i - 1] + prev[j - weight[i - 1]], prev[j]);
+                    prev[j] = Math.max(value[i - 1] + prev[j - weight[i - 1]], prev[j]);
                 }
                 else{
-                    curr[j] = prev[j];
+                    prev[j] = prev[j];
                 }
             }
-            prev = curr;
         }
 
         return prev[maxWeight];
+
+
+
+
+
+
+
+
+        // int[] prev = new int[maxWeight + 1];
+
+        // for(int i = 1; i <= n; i++){
+        //     int[] curr = new int[maxWeight + 1];
+        //     for(int j = 0; j <= maxWeight; j++){
+        //         if(j >= weight[i - 1]){
+        //             curr[j] = Math.max(value[i - 1] + prev[j - weight[i - 1]], prev[j]);
+        //         }
+        //         else{
+        //             curr[j] = prev[j];
+        //         }
+        //     }
+        //     prev = curr;
+        // }
+
+        // return prev[maxWeight];
 
 
 
