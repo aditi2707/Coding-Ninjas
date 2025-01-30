@@ -36,9 +36,7 @@ public class Solution {
         prev[0] = 1;
 
         for(int i = 1; i <= str.length(); i++){
-            int[] curr = new int[sub.length() + 1];
-            curr[0] = 1;
-            for(int j = 1; j <= sub.length(); j++){
+            for(int j = sub.length(); j > 0; j--){
 
                 int notPick = prev[j] % MOD;
                 int pick = 0;
@@ -47,12 +45,39 @@ public class Solution {
                     pick = prev[j - 1] % MOD;
                 }
 
-                curr[j] = pick + notPick;
+                prev[j] = pick + notPick;
             }
-            prev = curr;
         }
 
         return prev[sub.length()];
+
+
+
+
+
+
+        // int[] prev = new int[sub.length() + 1];
+
+        // prev[0] = 1;
+
+        // for(int i = 1; i <= str.length(); i++){
+        //     int[] curr = new int[sub.length() + 1];
+        //     curr[0] = 1;
+        //     for(int j = 1; j <= sub.length(); j++){
+
+        //         int notPick = prev[j] % MOD;
+        //         int pick = 0;
+
+        //         if(str.charAt(i - 1) == sub.charAt(j - 1)){
+        //             pick = prev[j - 1] % MOD;
+        //         }
+
+        //         curr[j] = pick + notPick;
+        //     }
+        //     prev = curr;
+        // }
+
+        // return prev[sub.length()];
 
 
 
